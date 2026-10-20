@@ -1220,3 +1220,24 @@
 // console.log(longestIncreasingSegment([2, 2, 3, 4])); // [2, 3, 4]
 // console.log(longestIncreasingSegment([])); // []
 // console.log(longestIncreasingSegment([7])); // [7]
+
+
+// Write a function called findPair(numbers, target) that returns the indices of the first pair of distinct elements whose sum equals target.
+
+function findPair(nums, target) {
+    for (let i = 0; i < nums.length - 1; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+            if (nums[i] + nums[j] === target) {
+                return [i, j];
+            }
+        }
+    }
+    return null;
+}
+
+console.log(findPair([2, 7, 11, 15], 9)); // [0, 1]
+console.log(findPair([3, 2, 4], 6)); // [1, 2]
+console.log(findPair([3, 3], 6)); // [0, 1]
+console.log(findPair([1, 2, 3], 10)); // null 
+console.log(findPair([-3, 7, 1, 4], 1)); // [0, 3]
+console.log(findPair([-3, 7, 1, 4], 2)); // null
