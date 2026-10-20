@@ -1179,7 +1179,7 @@
 // function pattern(array, n) {
 //     const newArray = [];
 
-//     if (n <= 0 || array.length === 0) return newArray;
+//     if (array.length === 0) return newArray;
 
 //     let i = 0;
 //     let increment = array.length === 1 ? 0 : 1;
@@ -1193,7 +1193,9 @@
 //     return newArray;
 // }
 
-
+// console.log(pattern([1, 2, 3], 0)) // []
+// console.log(pattern([], 3)) // []
+// console.log(pattern([5], 4)) // [5, 5, 5, 5]
 // console.log(pattern([1, 2, 3, 4, 5, 6], 0)); // []
 // console.log(pattern([1, 2, 3, 4, 5, 6], 2)); // [1, 2]
 // console.log(pattern([1, 2, 3, 4, 5, 6], 5)); // [1, 2, 3, 4, 5]
@@ -1312,3 +1314,52 @@
 // console.log(firstUniqueNumber([5, 5, 5])); // null
 // console.log(firstUniqueNumber([])); // null
 // console.log(firstUniqueNumber([0, -1, 0, -1, 8])); // 8
+
+
+
+// Write a function longestRun(numbers) that returns an array containing the number that appears in the longest consecutive run, repeated for the length of that run. A run ends when the next number differs from the current number.
+
+function longestRun(nums) {
+    if (nums.length <= 1) return nums;
+
+    const result = [];
+    let currRun = 1;
+    let currNum = nums[0];
+    let longRun = 0;
+    let longRunNum = nums[0];
+
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] === nums[i - 1]) {
+            currRun++;
+            currNum = nums[i];
+        }
+        else {
+            currRun = 1;
+            currNum = nums[i];
+        }
+        if (currRun > longRun) {
+            longRun = currRun;
+            longRunNum = currNum;
+        }
+    }
+
+    for (let i = 0; i < longRun; i++) {
+        result[i] = longRunNum;
+    }
+
+    return result;
+}
+
+console.log(longestRun([1, 1, 2])); // [1, 1]
+console.log(longestRun([1, 2, 2])); // [2, 2]
+console.log(longestRun([1, 1, 2, 2])); // [1, 1]
+console.log(longestRun([1, 2, 2, 3, 3, 3])); // [3, 3, 3]
+console.log(longestRun([4, 4, 1, 1, 1])); // [1, 1, 1]
+console.log(longestRun([5, 5, 5, 2, 2, 2])); // [5, 5, 5]
+console.log(longestRun([1, 1, 2, 2, 2, 1, 1, 1])); // [2,2,2]
+console.log(longestRun([1, 1, 2, 2, 2, 3, 3])); // [2, 2, 2]
+console.log(longestRun([4, 4, 4, 1, 1, 2])); // [4, 4, 4]
+console.log(longestRun([1, 2, 3, 3, 3, 3, 2])); // [3, 3, 3, 3]
+console.log(longestRun([5, 5, 1, 1])); // [5, 5]
+console.log(longestRun([7])); // [7]
+console.log(longestRun([])); // []
