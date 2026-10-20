@@ -891,6 +891,8 @@
 // console.log(numbers === result);
 
 
+// Write a JavaScript function called analyzeNumbers(numbers) that returns the second-largest distinct number in an array. If there is no second-largest distinct number, return null
+
 // function analyzeNumbers(numbers) {
 //     if (numbers.length <= 1) return null;
 //     let largest = numbers[0], secLargest = -Infinity;
@@ -914,6 +916,10 @@
 // console.log(analyzeNumbers([-5, -2, -10]));     // -5
 // console.log(analyzeNumbers([1, 2]));            // 1
 
+
+
+// Write a function longestIncreasingLength(numbers) that returns the length of the longest contiguous strictly increasing sequence in an array.
+// A sequence is contiguous when its elements are next to each other in the original array. Each element must be strictly greater than the preceding element.
 
 // function longestIncreasingLength(numbers) {
 //     if (numbers.length === 0) return 0;
@@ -942,7 +948,7 @@
 // console.log(longestIncreasingLength([1, 3, 2, 4, 4.308, 5, 7, 8, 9])); // 7
 
 
-
+// Write a function called secondLargest(numbers) that returns the second-largest distinct number without sorting the array.
 
 // function secondLargest(numbers) {
 //     if (numbers.length <= 1) return null;
@@ -961,7 +967,6 @@
 // }
 
 
-
 // console.log(secondLargest([5, 1, 5, 3]));             // 3
 // console.log(secondLargest([-1, -5, -3]));             // -3
 // console.log(secondLargest([4, 4, 4]));                // null
@@ -972,6 +977,9 @@
 
 
 
+// Write a function removeDuplicates(numbers) that removes duplicate numbers from an array in place, preserving the order of their first occurrences.
+// Return the modified array.
+// You must not create another array to store the result.
 
 // function removeDuplicates(nums) {
 //     for (let i = 0; i < nums.length; i++) {
@@ -992,7 +1000,6 @@
 
 // const numbers = [1, 2, 1, 3, 2, 4];
 // const result = removeDuplicates(numbers);
-
 // console.log(numbers);         // [1, 2, 3, 4]
 // console.log(numbers === result); // true
 
@@ -1157,22 +1164,59 @@
 // console.log(result[result.length - 1].value);
 // console.log(typeof count);
 
-function moveZeros(nums) {
-    let j = 0;
-    for (let i = 0; i < nums.length; i++) {
-        if (nums[i] !== 0) {
-            nums[j] = nums[i];
-            j++;
-        }
-    }
-    for (let i = j; i < nums.length; i++) {
-        nums[i] = 0;
-    }
-    return nums;
-}
 
-console.log(moveZeros([])); // []
-console.log(moveZeros([0, 0, 0])); // [0, 0, 0] 
-console.log(moveZeros([0, 0, 1, 2, 3])); // [1, 2, 3] 
-console.log(moveZeros([4, 0, 5, 0, 2])); // [4, 5, 2, 0, 0]
-console.log(moveZeros([0, 1, 0, 3, 12])); // [1, 3, 12, 0, 0]
+
+// Write a function moveZeros(numbers) that moves every 0 to the end of the array while preserving the relative order of all non-zero elements.
+
+// function moveZeros(nums) {
+//     let j = 0;
+//     for (let i = 0; i < nums.length; i++) {
+//         if (nums[i] !== 0) {
+//             nums[j] = nums[i];
+//             j++;
+//         }
+//     }
+//     for (let i = j; i < nums.length; i++) {
+//         nums[i] = 0;
+//     }
+//     return nums;
+// }
+
+// console.log(moveZeros([])); // []
+// console.log(moveZeros([0, 0, 0])); // [0, 0, 0] 
+// console.log(moveZeros([0, 0, 1, 2, 3])); // [1, 2, 3] 
+// console.log(moveZeros([4, 0, 5, 0, 2])); // [4, 5, 2, 0, 0]
+// console.log(moveZeros([0, 1, 0, 3, 12])); // [1, 3, 12, 0, 0]
+
+
+
+// Write a function longestIncreasingSegment(numbers) that returns a new array containing the longest contiguous, strictly increasing segment of the input array.
+// A segment must consist of consecutive elements in the original array. You cannot skip elements to make a longer sequence.
+
+// function longestIncreasingSegment(nums) {
+//     if (nums.length === 0) return [];
+
+//     let current = [nums[0]];
+//     let longest = [nums[0]];
+
+//     for (let i = 1; i < nums.length; i++) {
+//         if (nums[i] > nums[i - 1]) {
+//             current.push(nums[i]);
+//         } else {
+//             current = [nums[i]];
+//         }
+//         if (current.length >= longest.length) {
+//             longest = current.slice();
+//         }
+//     }
+
+//     return longest;
+// }
+
+
+// console.log(longestIncreasingSegment([1, 2, 3, 1, 2, 5])); // [1, 2, 5]
+// console.log(longestIncreasingSegment([5, 6, 7, 2, 3, 4, 5])); // [2, 3, 4, 5]
+// console.log(longestIncreasingSegment([4, 3, 2, 1])); // [4]
+// console.log(longestIncreasingSegment([2, 2, 3, 4])); // [2, 3, 4]
+// console.log(longestIncreasingSegment([])); // []
+// console.log(longestIncreasingSegment([7])); // [7]
