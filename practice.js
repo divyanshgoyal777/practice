@@ -1126,8 +1126,6 @@
 // console.log(result);
 
 
-
-
 // const shared = { value: 3 };
 
 // const items = [
@@ -1164,6 +1162,49 @@
 // console.log(result[result.length - 1].value);
 // console.log(typeof count);
 
+
+// function pattern(n) {
+//     const arr = [];
+
+//     for (let i = 0; i <= n * 2; i++) {
+//         arr[i] = n - Math.abs(n - i);
+//     }
+
+//     return arr;
+// }
+
+// console.log(pattern(10));
+
+
+// function pattern(array, n) {
+//     const newArray = [];
+
+//     if (n <= 0 || array.length === 0) return newArray;
+
+//     let i = 0;
+//     let increment = array.length === 1 ? 0 : 1;
+
+//     for (let count = 0; count < n; count++) {
+//         newArray.push(array[i]);
+//         i += increment;
+//         increment = (i === 0 || i >= array.length - 1) ? -increment : increment;
+//     }
+
+//     return newArray;
+// }
+
+
+// console.log(pattern([1, 2, 3, 4, 5, 6], 0)); // []
+// console.log(pattern([1, 2, 3, 4, 5, 6], 2)); // [1, 2]
+// console.log(pattern([1, 2, 3, 4, 5, 6], 5)); // [1, 2, 3, 4, 5]
+// console.log(pattern([1, 2, 3, 4, 5, 6], 6)); // [1, 2, 3, 4, 5, 6]
+// console.log(pattern([1, 2, 3, 4, 5, 6], 7)); // [1, 2, 3, 4, 5, 6, 5]
+// console.log(pattern([1, 2, 3, 4, 5, 6], 9)); // [1, 2, 3, 4, 5, 6, 5, 4, 3]
+// console.log(pattern([1, 2, 3, 4, 5, 6], 12)); // [1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 2]
+// console.log(pattern([1, 2, 3, 4, 5, 6], 13)); // [1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 2, 3]
+// console.log(pattern([1, 2, 3, 4, 5, 6], 16)); // [1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6]
+// console.log(pattern([1, 2, 3, 4, 5, 6], 20)); // [1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2]
+// console.log(pattern([1, 2, 3, 4, 5, 6], 25)); // [1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5]
 
 
 // Write a function moveZeros(numbers) that moves every 0 to the end of the array while preserving the relative order of all non-zero elements.
@@ -1245,29 +1286,29 @@
 
 // Write a function firstUniqueNumber(numbers) that returns the first number that appears exactly once in the array.If every number repeats, return null.
 
-function firstUniqueNumber(nums) {
-    const obj = {};
+// function firstUniqueNumber(nums) {
+//     const obj = {};
 
-    for (let i = 0; i < nums.length; i++) {
-        if (obj[nums[i]] === undefined) {
-            obj[nums[i]] = 1;
-        } else {
-            obj[nums[i]]++;
-        }
-    }
+//     for (let i = 0; i < nums.length; i++) {
+//         if (obj[nums[i]] === undefined) {
+//             obj[nums[i]] = 1;
+//         } else {
+//             obj[nums[i]]++;
+//         }
+//     }
 
-    for (let i = 0; i < nums.length; i++) {
-        if (obj[nums[i]] === 1) {
-            return nums[i];
-        }
-    }
+//     for (let i = 0; i < nums.length; i++) {
+//         if (obj[nums[i]] === 1) {
+//             return nums[i];
+//         }
+//     }
 
-    return null;
-}
+//     return null;
+// }
 
-console.log(firstUniqueNumber([7, 7, 3, 3, 9])); // 9
-console.log(firstUniqueNumber([4, 5, 1, 2, 1, 4, 5])); // 2 
-console.log(firstUniqueNumber([1, 2, 3])); // 1
-console.log(firstUniqueNumber([5, 5, 5])); // null
-console.log(firstUniqueNumber([])); // null
-console.log(firstUniqueNumber([0, -1, 0, -1, 8])); // 8
+// console.log(firstUniqueNumber([7, 7, 3, 3, 9])); // 9
+// console.log(firstUniqueNumber([4, 5, 1, 2, 1, 4, 5])); // 2 
+// console.log(firstUniqueNumber([1, 2, 3])); // 1
+// console.log(firstUniqueNumber([5, 5, 5])); // null
+// console.log(firstUniqueNumber([])); // null
+// console.log(firstUniqueNumber([0, -1, 0, -1, 8])); // 8
