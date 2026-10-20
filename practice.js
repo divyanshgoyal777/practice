@@ -1224,20 +1224,50 @@
 
 // Write a function called findPair(numbers, target) that returns the indices of the first pair of distinct elements whose sum equals target.
 
-function findPair(nums, target) {
-    for (let i = 0; i < nums.length - 1; i++) {
-        for (let j = i + 1; j < nums.length; j++) {
-            if (nums[i] + nums[j] === target) {
-                return [i, j];
-            }
+// function findPair(nums, target) {
+//     for (let i = 0; i < nums.length - 1; i++) {
+//         for (let j = i + 1; j < nums.length; j++) {
+//             if (nums[i] + nums[j] === target) {
+//                 return [i, j];
+//             }
+//         }
+//     }
+//     return null;
+// }
+
+// console.log(findPair([2, 7, 11, 15], 9)); // [0, 1]
+// console.log(findPair([3, 2, 4], 6)); // [1, 2]
+// console.log(findPair([3, 3], 6)); // [0, 1]
+// console.log(findPair([1, 2, 3], 10)); // null 
+// console.log(findPair([-3, 7, 1, 4], 1)); // [0, 3]
+// console.log(findPair([-3, 7, 1, 4], 2)); // null
+
+
+// Write a function firstUniqueNumber(numbers) that returns the first number that appears exactly once in the array.If every number repeats, return null.
+
+function firstUniqueNumber(nums) {
+    const obj = {};
+
+    for (let i = 0; i < nums.length; i++) {
+        if (obj[nums[i]] === undefined) {
+            obj[nums[i]] = 1;
+        } else {
+            obj[nums[i]]++;
         }
     }
+
+    for (let i = 0; i < nums.length; i++) {
+        if (obj[nums[i]] === 1) {
+            return nums[i];
+        }
+    }
+
     return null;
 }
 
-console.log(findPair([2, 7, 11, 15], 9)); // [0, 1]
-console.log(findPair([3, 2, 4], 6)); // [1, 2]
-console.log(findPair([3, 3], 6)); // [0, 1]
-console.log(findPair([1, 2, 3], 10)); // null 
-console.log(findPair([-3, 7, 1, 4], 1)); // [0, 3]
-console.log(findPair([-3, 7, 1, 4], 2)); // null
+console.log(firstUniqueNumber([7, 7, 3, 3, 9])); // 9
+console.log(firstUniqueNumber([4, 5, 1, 2, 1, 4, 5])); // 2 
+console.log(firstUniqueNumber([1, 2, 3])); // 1
+console.log(firstUniqueNumber([5, 5, 5])); // null
+console.log(firstUniqueNumber([])); // null
+console.log(firstUniqueNumber([0, -1, 0, -1, 8])); // 8
