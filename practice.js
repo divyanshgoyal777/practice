@@ -175,27 +175,6 @@
 // greet();
 
 
-// function greet() {
-//     console.log("Hello");
-//     return "Hello";
-// }
-
-// let a = greet;
-// let b = a;
-// let c = b;
-
-// console.log(c());
-// console.log(c(b(a(c()))));
-
-// function greet() {
-//     console.log("Hello");
-// }
-
-// let a = greet;
-// let b = greet;
-
-// console.log(a === b);
-
 // function test() {
 //     console.log("A");
 //     return console.log("B");
@@ -204,6 +183,8 @@
 // let x = test();
 
 // console.log(x);
+
+// console.log(console.log(1), console.log(console.log(2)));
 
 // function test() {
 //     if (true)
@@ -341,11 +322,13 @@
 // function a(b) {
 //     console.log(b);
 // }
-// console.log(a);
 
+// console.log(a("a"));
+
+// console.log(console.log(a))
 
 // if ({ a }) {
-//     const b = a + ""
+//     const b = a + "";
 //     a({ b })
 // } else {
 //     console.log("empty object is falsy");
@@ -370,6 +353,40 @@
 
 // for (
 //     console.log("A");
+//     console.log("B");
+//     console.log("C")
+// ) {
+//     console.log("D");
+// }
+
+
+// function greet() {
+//     console.log("Hello");
+//     return "Hello";
+// }
+
+// let a = greet;
+// let b = a;
+// let c = b;
+
+// console.log(c());
+// console.log(c(b(a(c()))));
+
+// function greet() {
+//     console.log("Hello");
+// }
+
+// let a = greet;
+// let b = greet;
+
+// console.log(a, b, greet, greet(), a(), b());
+// console.log(a, b(), greet, greet(), b, a());
+
+
+// console.log(a === b);
+
+// for (
+//     true ? console.log("A") : console.log("a");
 //     console.log("B");
 //     console.log("C")
 // ) {
@@ -475,6 +492,63 @@
 // }
 
 
+// let value = "3";
+
+// while (value) {
+//     console.log(value);
+//     value--;
+//     if(value === 0) continue;
+// }
+
+
+// let value = "3";
+
+// while (value) {
+//     console.log("Before --", value);
+//     value--;
+//     console.log("after --", value);
+//     if (value === 0) continue;
+//     console.log("after if", value);
+
+// }
+
+
+// let value = "3";
+
+// while (value) {
+//     if (value === 0) continue;
+//     console.log("Before --", value);
+//     value--;
+//     console.log("after --", value);
+//     console.log("after if", value);
+
+// }
+
+
+// let value = "3";
+
+// while (value) {
+//     if (value === 2) continue;
+//     console.log("Before --", value);
+//     value--;
+//     console.log("after --", value);
+//     console.log("after if", value);
+
+// }
+
+
+// let value = "3";
+
+// while (value) {
+//     value--;
+//     if (value === 2) continue;
+//     console.log("Before --", value);
+//     console.log("after --", value);
+//     console.log("after if", value);
+
+// }
+
+
 // function test() {
 //     for (let i = 0; i < 3; i++) {
 //         if (i === 1) {
@@ -563,17 +637,16 @@
 // const a = [1];
 
 // a[2] = "2";
-// console.log(a) // 1 _ '2'
+// console.log(a)
 // a["2"] = "2";
-// console.log(a) // 1 _ '2'
+// console.log(a)
 // a["aa"] = "2";
-// console.log(a) // '2' _ '2'
+// console.log(a)
 // a[a[a[a]]] = "3";
 // a["a"] = 3;
-// console.log(a); // '3' _ '2'
+// console.log(a);
 
-// console.log(a.length);  // 3
-
+// console.log(a.length);
 
 
 
@@ -814,6 +887,11 @@
 //     }
 // }
 
+// console.log(numbers);
+
+
+// const numbers = [8, 10, 2, 12, 15, 3];
+
 // for (let i = numbers.length - 1; i >= 0; i--) {
 //   if (numbers[i] > 5) {
 //     numbers.splice(i, 1);
@@ -889,6 +967,193 @@
 // console.log(numbers);
 // console.log(result);
 // console.log(numbers === result);
+
+
+// Fractal Tree
+// rules  : (1 → 11), (0 → 1[0]0)
+
+
+// 0:	0
+// 1:	1[0]0
+// 2:	11[1[0]0]1[0]0
+// 3:	1111[11[1[0]0]1[0]0]11[1[0]0]1[0]0
+
+
+// function fractalTree(num) {
+//     if (num <= 0) return "0";
+//     let prevStr = fractalTree(num - 1);
+//     console.log(prevStr);
+//     let str = "";
+
+//     for (let i = 0; i < prevStr.length; i++) {
+//         if (prevStr[i] === '0') {
+//             str += '1[0]0';
+//         } else if (prevStr[i] === '1') {
+//             str += '11';
+//         } else {
+//             str += prevStr[i];
+//         }
+//     }
+//     return str;
+// }
+
+// console.log(fractalTree(15))
+
+
+// Algae
+// rules  : (A → AB), (B → A)
+
+// function algae(num) {
+//     if (num <= 0) return "A";
+//     let prevStr = algae(num - 1);
+//     console.log(prevStr);
+//     let str = "";
+
+//     for (let i = 0; i < prevStr.length; i++) {
+//         if (prevStr[i] === 'A') {
+//             str += 'AB';
+//         } else {
+//             str += 'A';
+//         }
+//     }
+//     return str;
+// }
+
+// algae(10);
+
+
+
+// Cantor set
+// rules  : (A → ABA), (B → BBB)
+
+
+// function cantorSet(num) {
+//     if (num <= 0) return "A";
+//     let prevStr = cantorSet(num - 1);
+//     console.log(prevStr);
+//     let str = "";
+
+//     for (let i = 0; i < prevStr.length; i++) {
+//         if (prevStr[i] === 'A') {
+//             str += 'ABA';
+//         } else {
+//             str += 'BBB';
+//         }
+//     }
+//     return str;
+// }
+
+// cantorSet(4);
+
+
+
+
+// Koch curve
+// rules  : (F → F+F−F−F+F)
+
+
+// function kochCurve(num) {
+//     if (num <= 0) return "F";
+//     let prevStr = kochCurve(num - 1);
+//     console.log(prevStr);
+//     let str = "";
+
+//     for (let i = 0; i < prevStr.length; i++) {
+//         if (prevStr[i] === 'F') {
+//             str += 'F+F−F−F+F';
+//         } else {
+//             str += prevStr[i];
+//         }
+//     }
+//     return str;
+// }
+
+// kochCurve(4);
+
+
+
+// Sierpinski triangle
+// rules  : (F → F−G+F+G−F), (G → GG)
+
+
+// function sierpinskiTriangle(num) {
+//     if (num <= 0) return "F";
+//     let prevStr = sierpinskiTriangle(num - 1);
+//     console.log(prevStr);
+//     let str = "";
+
+//     for (let i = 0; i < prevStr.length; i++) {
+//         if (prevStr[i] === 'F') {
+//             str += 'F−G+F+G−F';
+//         } else if (prevStr[i] === 'G') {
+//             str += 'GG';
+//         } else {
+//             str += prevStr[i];
+//         }
+//     }
+//     return str;
+// }
+
+// sierpinskiTriangle(4);
+
+
+
+
+// dragon curve
+// rules  : (F → F+G), (G → F-G)
+
+
+// function dragonCurve(num) {
+//     if (num <= 0) return "F";
+
+//     const prevStr = dragonCurve(num - 1);
+//     let result = "";
+//     console.log(prevStr);
+//     for (const char of prevStr) {
+//         switch (char) {
+//             case "F":
+//                 result += "F+G";
+//                 break;
+//             case "G":
+//                 result += "F-G";
+//                 break;
+//             default:
+//                 result += char;
+//         }
+//     }
+//     return result;
+// }
+
+// dragonCurve(4);
+
+
+// fractal plant
+// rules: (X → F+[[X]-X]-F[-FX]+X), (F → FF)
+
+
+// function fractalPlant(num) {
+// if (num <= 0) return "X";
+
+// const prevStr = fractalPlant(num - 1);
+// let result = "";
+// console.log(prevStr)
+// for (const char of prevStr) {
+//     switch (char) {
+//         case "X":
+//             result += "F+[[X]-X]-F[-FX]+X";
+//             break;
+//         case "F":
+//             result += "FF";
+//             break;
+//         default:
+//             result += char;
+//     }
+// }
+
+//     return result;
+// }
+
+// console.log(fractalPlant(3));
 
 
 // Write a JavaScript function called analyzeNumbers(numbers) that returns the second-largest distinct number in an array. If there is no second-largest distinct number, return null
@@ -1209,6 +1474,7 @@
 // console.log(pattern([1, 2, 3, 4, 5, 6], 25)); // [1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5]
 
 
+
 // Write a function moveZeros(numbers) that moves every 0 to the end of the array while preserving the relative order of all non-zero elements.
 
 // function moveZeros(nums) {
@@ -1339,6 +1605,7 @@
 //     return result;
 // }
 
+// console.log(longestRun([])); // []
 // console.log(longestRun([1, 1, 2])); // [1, 1]
 // console.log(longestRun([1, 2, 2])); // [2, 2]
 // console.log(longestRun([1, 1, 2, 2])); // [1, 1]
@@ -1352,3 +1619,103 @@
 // console.log(longestRun([5, 5, 1, 1])); // [5, 5]
 // console.log(longestRun([7])); // [7]
 // console.log(longestRun([])); // []
+
+
+
+// Write a function rotateRight(nums, k) that rotates an array to the right by k positions, modifying the original array.
+
+// function reversePart(start, end, nums) {
+//     while (start < end) {
+//         const temp = nums[start];
+//         nums[start] = nums[end];
+//         nums[end] = temp;
+//         start++;
+//         end--;
+//     };
+// }
+
+// function rotateRight(nums, k) {
+//     const n = nums.length;
+//     if (n <= 1 || k === 0) return nums;
+
+//     k = k % n;
+
+//     nums.reverse();
+//     reversePart(0, k - 1, nums);
+//     reversePart(k, n - 1, nums);
+
+//     return nums;
+// }
+
+// function rotateRight(nums, k) {
+//     const n = nums.length;
+//     if (n <= 1 || k === 0) return nums;
+
+//     k = k % n;
+
+//     for (let i = 0; i < k; i++) {
+//         const last = nums[n - 1];
+//         for (let j = n - 1; j > 0; j--) {
+//             nums[j] = nums[j - 1];
+//         }
+//         nums[0] = last;
+//     }
+
+//     return nums;
+// }
+
+
+// console.log(rotateRight([1, 2, 3, 4, 5], 2)); // [4, 5, 1, 2, 3]
+// console.log(rotateRight([1, 2, 3], 1)); // [3, 1, 2]
+// console.log(rotateRight([1, 2, 3], 3)); // [1, 2, 3]
+// console.log(rotateRight([1, 2, 3], 4)); // [3, 1, 2]
+// console.log(rotateRight([1, 2], 1)); // [2, 1]
+// console.log(rotateRight([], 3)); // []
+// console.log(rotateRight([7], 10)); // [7]
+
+
+
+// Write a function mergeSortedArrays(first, second) that returns a new sorted array containing all elements from both input arrays. Both input arrays are already sorted in ascending order.
+
+
+// function mergeSortedArrays(arr1, arr2) {
+//     const result = [];
+//     let i = 0, j = 0, k = 0;
+
+//     while (i < arr1.length && j < arr2.length) {
+//         result[k++] = (arr1[i] < arr2[j]) ? arr1[i++] : arr2[j++];
+//     }
+//     while (i < arr1.length) {
+//         result[k++] = arr1[i++];
+//     }
+//     while (j < arr2.length) {
+//         result[k++] = arr2[j++];
+//     }
+
+//     return result;
+// }
+
+// console.log(mergeSortedArrays([1, 3, 5], [2, 4, 6])); // [1, 2, 3, 4, 5, 6]
+// console.log(mergeSortedArrays([1, 2, 2], [2, 3, 4])); // [1, 2, 2, 2, 3, 4]
+// console.log(mergeSortedArrays([], [1, 2])); // [1, 2]
+// console.log(mergeSortedArrays([], [])); // []
+// console.log(mergeSortedArrays([1, 2], [3, 4])); // [1, 2, 3, 4]
+// console.log(mergeSortedArrays([3, 4], [1, 2])); // [1, 2, 3, 4]
+// console.log(mergeSortedArrays([-5, -1, 4], [-3, 0, 6])); // [-5, -3, -1, 0, 4, 6]
+
+
+
+// Write a function findMissingNumber(numbers).
+// You are given an array containing distinct integers from 0 through n, with exactly one number missing. The array has n elements.
+// Return the missing number.
+
+
+function findMissingNumber(nums) {
+
+}
+
+console.log(findMissingNumber([3, 0, 1])); // 2
+console.log(findMissingNumber([0, 1])); // 2
+console.log(findMissingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1])); // 8
+console.log(findMissingNumber([1])); // 0
+console.log(findMissingNumber([])); // 0
