@@ -1711,7 +1711,15 @@
 
 
 function findMissingNumber(nums) {
+    let sumOfArrayElements = 0;
+    let sumOfNaturalNums = 0;
 
+    for (let i = 0; i < nums.length; i++) {
+        sumOfArrayElements += nums[i];
+        sumOfNaturalNums += i + 1;
+    }
+
+    return sumOfNaturalNums - sumOfArrayElements;
 }
 
 console.log(findMissingNumber([3, 0, 1])); // 2
