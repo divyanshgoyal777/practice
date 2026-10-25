@@ -1605,7 +1605,6 @@
 //     return result;
 // }
 
-// console.log(longestRun([])); // []
 // console.log(longestRun([1, 1, 2])); // [1, 1]
 // console.log(longestRun([1, 2, 2])); // [2, 2]
 // console.log(longestRun([1, 1, 2, 2])); // [1, 1]
@@ -1710,20 +1709,158 @@
 // Return the missing number.
 
 
-function findMissingNumber(nums) {
-    let sumOfArrayElements = 0;
-    let sumOfNaturalNums = 0;
+// function findMissingNumber(nums) {
+//     let sumOfArrayElements = 0;
+//     let sumOfNaturalNums = 0;
 
-    for (let i = 0; i < nums.length; i++) {
-        sumOfArrayElements += nums[i];
-        sumOfNaturalNums += i + 1;
-    }
+//     for (let i = 0; i < nums.length; i++) {
+//         sumOfArrayElements += nums[i];
+//         sumOfNaturalNums += i + 1;
+//     }
 
-    return sumOfNaturalNums - sumOfArrayElements;
-}
+//     return sumOfNaturalNums - sumOfArrayElements;
+// }
 
-console.log(findMissingNumber([3, 0, 1])); // 2
-console.log(findMissingNumber([0, 1])); // 2
-console.log(findMissingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1])); // 8
-console.log(findMissingNumber([1])); // 0
-console.log(findMissingNumber([])); // 0
+// console.log(findMissingNumber([3, 0, 1])); // 2
+// console.log(findMissingNumber([0, 1])); // 2
+// console.log(findMissingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1])); // 8
+// console.log(findMissingNumber([1])); // 0
+// console.log(findMissingNumber([])); // 0
+
+
+// Write a function called productExceptSelf(numbers) that returns a new array where each element is the product of every element in the original array except the element at that same index.
+// You must solve this without using division.
+
+// const prefix = [1];
+// const suffix = [1, 1, 1, 1, 1];
+
+// for (let i = 1; i < nums.length; i++) {
+//     prefix[i] = prefix[i - 1] * nums[i - 1];
+// }
+
+// for (let i = nums.length - 2; i >= 0; i--) {
+//     suffix[i] = suffix[i + 1] * nums[i + 1];
+// }
+
+// for (let i = 0; i < nums.length - 1; i++) {
+//     suffix.unshift(suffix[0] * nums[nums.length - i - 1]);
+// }
+
+// console.log(prefix);
+// console.log(suffix);
+
+// function productExceptSelf(nums) {
+//     if (nums.length === 0) return nums;
+//     const result = [1];
+//     let suffixProduct = 1;
+
+//     for (let i = 1; i < nums.length; i++) {
+//         result[i] = result[i - 1] * nums[i - 1];
+//     }
+
+//     for (let i = nums.length - 1; i >= 0; i--) {
+//         result[i] *= suffixProduct;
+//         suffixProduct *= nums[i];
+//     }
+
+//     return result;
+// }
+
+
+// console.log(productExceptSelf([1, 2, 3, 4, 5])); // [24, 12, 8, 6]
+// console.log(productExceptSelf([2, 3, 0, 4])); // [0, 0, 24, 0]
+// console.log(productExceptSelf([0, 5, 0])); // [0, 0, 0]
+// console.log(productExceptSelf([-1, 2, -3, 4])); // [-24, 12, -8, 6]
+// console.log(productExceptSelf([5])); // [1]
+// console.log(productExceptSelf([])); // []
+
+
+
+// Write a function called compressString(str) that compresses consecutive repeated characters by replacing each group with the character followed by its count.
+
+
+// function compressString(str) {
+//     let result = "";
+//     let count = 1;
+
+//     for (let i = 0; i < str.length; i++) {
+//         if (str[i] !== str[i + 1]) {
+//             result += str[i] + count;
+//             count = 1;
+//         } else {
+//             count++;
+//         }
+//     }
+
+//     return result;
+// }
+
+// console.log(compressString("aaabbcaaaa")); // "a3b2c1a4"
+// console.log(compressString("abcd")); // "a1b1c1d1"
+// console.log(compressString(""));  // ""
+// console.log(compressString("xxxxx")); // "x5"
+// console.log(compressString("aabbaa")); // "a2b2a2"
+
+
+// Write a function called equilibriumIndex(numbers) that returns the first index where the sum of all elements strictly to its left equals the sum of all elements strictly to its right.
+// The element at the index itself is excluded from both sums.
+
+// function equilibriumIndex(nums) {
+//     const left = [0];
+//     const n = nums.length;
+//     const right = new Array(n).fill(0);
+
+//     for (let i = 0; i < n - 1; i++) {
+//         left.push(left[i] + nums[i]);
+//     }
+
+//     for (let i = n - 2; i >= 0; i--) {
+//         right[i] = right[i + 1] + nums[i + 1];
+//     }
+
+//     for (let i = 0; i < n; i++) {
+//         if (left[i] === right[i]) return i;
+//     }
+
+//     return -1;
+// }
+
+// function equilibriumIndex(nums) {
+//     let sum = 0;
+//     let leftSum = 0;
+
+//     for (let i = 0; i < nums.length; i++) {
+//         sum += nums[i];
+//     }
+
+//     for (let i = 0; i < nums.length; i++) {
+//         const rightSum = sum - leftSum - nums[i];
+//         if (leftSum === rightSum) {
+//             return i;
+//         }
+//         leftSum += nums[i];
+//     }
+
+//     return -1;
+// }
+
+// console.log(equilibriumIndex([1, 7, 3, 6, 5, 6])); // Expected: 3
+// console.log(equilibriumIndex([2, 1, -1])); // Expected: 0
+// console.log(equilibriumIndex([1, -1, 2])); // Expected: 2
+// console.log(equilibriumIndex([1, 2, 3])); // Expected: -1
+// console.log(equilibriumIndex([])); // Expected: -1
+// console.log(equilibriumIndex([5])); // Expected: 0
+// console.log(equilibriumIndex([0])); // Expected: 0
+// console.log(equilibriumIndex([1, 1])); // Expected: -1 
+// console.log(equilibriumIndex([0, 0])); // Expected: 0
+// console.log(equilibriumIndex([0, 0, 0, 0, 0])); // Expected: 0
+// console.log(equilibriumIndex([-7, 1, 5, 2, -4, 3, 0])); // Expected: 3
+// console.log(equilibriumIndex([-1, -1, -1, 0, 1, 1])); // Expected: 0
+// console.log(equilibriumIndex([0, 0, 0, 0])); // Expected: 0
+// console.log(equilibriumIndex([-2, 3, 1, -1, -3])); // Expected: 0
+// console.log(equilibriumIndex([1000000, 2000000, 3000000, 0, 3000000])); // Expected: 2
+// console.log(equilibriumIndex([1, 2, 1, 2, 1])); // Expected: 2
+// console.log(equilibriumIndex([4, 0, 4])); // Expected: 1
+// console.log(equilibriumIndex([-5, -2, -3])); // Expected: -1
+// console.log(equilibriumIndex([1, 0, 1, 0, 1])); // Expected: 2
+// console.log(equilibriumIndex([0, 1, -1, 0])); // Expected: 0
