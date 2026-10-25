@@ -1864,3 +1864,159 @@
 // console.log(equilibriumIndex([-5, -2, -3])); // Expected: -1
 // console.log(equilibriumIndex([1, 0, 1, 0, 1])); // Expected: 2
 // console.log(equilibriumIndex([0, 1, -1, 0])); // Expected: 0
+
+
+// Write a function called spiralOrder(matrix) that returns all elements of a matrix in clockwise spiral order, starting from the top-left corner.
+
+// function spiralOrder(matrix) {
+//     if (matrix.length === 0) return [];
+
+//     const result = [];
+//     let top = 0;
+//     let bottom = matrix.length - 1;
+//     let left = 0;
+//     let right = matrix[0].length - 1;
+
+//     while (top <= bottom && left <= right) {
+//         for (let i = left; i <= right; i++) {
+//             result.push(matrix[top][i]);
+//         }
+//         top++;
+
+//         for (let i = top; i <= bottom; i++) {
+//             result.push(matrix[i][right]);
+//         }
+//         right--;
+
+//         if (top <= bottom) {
+//             for (let i = right; i >= left; i--) {
+//                 result.push(matrix[bottom][i]);
+//             }
+//             bottom--;
+//         }
+
+//         if (left <= right) {
+//             for (let i = bottom; i >= top; i--) {
+//                 result.push(matrix[i][left]);
+//             }
+//             left++;
+//         }
+//     }
+
+//     return result;
+// }
+
+
+// console.log(spiralOrder([])); // []
+// console.log(spiralOrder([[7]])); // [7]
+// console.log(spiralOrder([[1, 2, 3, 4]])); // [1, 2, 3, 4]
+// console.log(spiralOrder([[1], [2], [3], [4]])); // [1, 2, 3, 4]
+// console.log(spiralOrder([
+//     [1, 2, 3],
+//     [4, 5, 6]
+// ])); // [1, 2, 3, 6, 5, 4]
+// console.log(spiralOrder([
+//     [1, 2],
+//     [3, 4],
+//     [5, 6]
+// ])); // [1, 2, 4, 6, 5, 3]
+// console.log(spiralOrder([
+//     [1, 2, 3],
+//     [4, 5, 6],
+//     [7, 8, 9]
+// ])); // [1, 2, 3, 6, 9, 8, 7, 4, 5]
+// console.log(spiralOrder([
+//     [1, 2, 3, 4],
+//     [5, 6, 7, 8],
+//     [9, 10, 11, 12],
+//     [13, 14, 15, 16]
+// ])); // [1, 2, 3, 4, 8, 12, 16, 15, 14, 13, 9, 5, 6, 7, 11, 10]
+// console.log(spiralOrder([
+//     [-1, 0],
+//     [2, -3]
+// ])); // [-1, 0, -3, 2]
+// console.log(spiralOrder([
+//     [1, 2],
+//     [3, 4],
+//     [5, 6],
+//     [7, 8]
+// ])); // [1, 2, 4, 6, 8, 7, 5, 3]
+
+
+
+// Write a function called isBalanced(str) that returns true if every opening bracket has a matching closing bracket in the correct order, and false otherwise.
+// The supported brackets are (), [], and {}. Ignore all other characters.
+
+// function isBalanced(str) {
+//     const stack = [];
+//     const pairs = {
+//         ')': '(',
+//         ']': '[',
+//         '}': '{',
+//     };
+
+//     for (const char of str) {
+//         if (char === '(' || char === '[' || char === '{') {
+//             stack.push(char);
+//         } else if (char in pairs) {
+//             if (stack.pop() !== pairs[char]) return false;
+//         }
+//     }
+
+//     return stack.length === 0;
+// }
+
+// console.log(isBalanced("()"));          // true
+// console.log(isBalanced("([]{})"));      // true
+// console.log(isBalanced("{[()]}"));      // true
+// console.log(isBalanced("(]"));          // false
+// console.log(isBalanced("([)]"));        // false
+// console.log(isBalanced("((("));         // false
+// console.log(isBalanced(""));            // true
+// console.log(isBalanced("a+(b*c)-{d/e}"));// true
+// console.log(isBalanced("]"));           // false
+// console.log(isBalanced("({[]})]"));     // false
+// console.log(isBalanced("{{{{}}}}"));    // true
+// console.log(isBalanced("[(])"));        // false
+
+
+
+// Given an array representing a mathematical expression in postfix notation, write a function called evaluatePostfix(tokens) that evaluates and returns the result.
+// In postfix notation, the operator comes after its operands.
+// For example, ["2", "3", "+"] means 2 + 3 = 5.
+// Supported operators: +, -, *, /.
+// For division, truncate the result toward zero.
+
+
+// function evaluatePostfix(arr) {
+//     const stack = [];
+//     const operations = {
+//         '+': function (a, b) { return a + b },
+//         '-': function (a, b) { return a - b },
+//         '*': function (a, b) { return a * b },
+//         '/': function (a, b) { return a / b },
+//     }
+
+//     for (const e of arr) {
+//         if (e in operations) {
+//             const b = Number(stack.pop());
+//             const a = Number(stack.pop());
+//             stack.push(operations[e](a, b));
+//         } else {
+//             stack.push(Number(e));
+//         }
+//     }
+
+//     return Math.trunc(stack.pop());
+// }
+
+// console.log(evaluatePostfix(["2", "3", "+"])); // 5
+// console.log(evaluatePostfix(["5", "2", "-", "3", "*"])); // 9
+// console.log(evaluatePostfix(["8", "3", "/"])); // 2
+// console.log(evaluatePostfix(["-7", "2", "/"])); // -3
+// console.log(evaluatePostfix(["4", "2", "+", "3", "*"])); // 18
+// console.log(evaluatePostfix(["10", "2", "3", "*", "+"])); // 16
+// console.log(evaluatePostfix(["5"])); // 5
+// console.log(evaluatePostfix(["12", "3", "/", "2", "-"])); // 2
+// console.log(evaluatePostfix(["2", "3", "-", "4", "-"])); // -5
+// console.log(evaluatePostfix(["2", "3", "+", "4", "5", "+", "*"])); // 45
