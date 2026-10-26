@@ -1,4 +1,4 @@
-const { test } = require("./test");
+const { test } = require("../test");
 
 // Write a function called simplifyPath(path) that returns the canonical form of an absolute Unix-style path.
 
@@ -11,9 +11,30 @@ const { test } = require("./test");
 
 
 function simplifyPath(path) {
+    const stack = [];
+    let word = "";
 
+    for (let i = 0; i <= path.length; i++) {
+        if (path[i] === "/" || i === path.length) {
+            if (word === "..") {
+                stack.pop();
+            } else if (word !== "" && word !== ".") {
+                stack.push(word);
+            }
+            word = "";
+        } else {
+            word += path[i];
+        }
+    }
+
+    let result = "";
+
+    for (const folder of stack) {
+        result += "/" + folder;
+    }
+
+    return result || "/";
 }
-
 
 test(simplifyPath("/home/"), "/home"); // "/home"
 test(simplifyPath("/a/./b/../../c/"), "/c"); // "/c"
